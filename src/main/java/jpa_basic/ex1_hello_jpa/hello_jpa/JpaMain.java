@@ -13,19 +13,13 @@ public class JpaMain {
 		EntityTransaction tx=em.getTransaction();
 		tx.begin();
 		try {
-			//영속 
 			
-			Member member =em.find(Member.class, 150L);
-			member.setName("AAAA");
+			Member member=new Member();
+			member.setId(3L);
+			member.setUsername("C");
+			member.setRoleType(RoleType.GUEST);
 			
-			em.detach(member); //준영속상태 
-			//영속성컨텍스트에서 뗴어내는것 즉 , jpa에서 관리를 하지 않느것 
-			//실행하면 아무일도 일어나지 않음 
-			//select 쿼리만 나오고 insert는 안나옴 
-			
-			
-			System.out.println("================");
-			
+			em.persist(member);
 			 tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
