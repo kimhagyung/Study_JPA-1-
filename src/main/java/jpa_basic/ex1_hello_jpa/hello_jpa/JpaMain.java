@@ -19,14 +19,20 @@ public class JpaMain {
 			
 			Member member = new Member();
 			member.setName("member1");
-			member.setTeamId(team.getId()); //외래키 식별자를 그대로 다루고 있음.
+			member.setTeam(team);
 			em.persist(member);
 			
+			em.flush();
+			em.clear(); //이거 두개를 하면 영속성컨텍스트를 초기화 시켜버려서 콘솔에 쿼리가 뜬다 
 			
 			//연관관계가 없기 떄문에 번거롭게 됨 계속 참조해야됨 
 			Member findMemeber = em.find(Member.class, member.getId());
-			Long findTeamId =  findMemeber.getTeamId();
-			Team findTeam = em.find(Team.class, findTeamId); 
+			Team findTeam = findMemeber.getTeam(); //바로 팀을 받아오면 됨 
+			System.out.println("findTeam = "+findTeam.getName());
+			
+			//연관관계 수정 
+			Team newTeam = em.find(Team.class, 100L);
+			findMemeber.setTeam(newTeam); //이러면  Member테이블의 연관관계 수정이 가능하다
 			
 			 tx.commit();
 		} catch (Exception e) {
