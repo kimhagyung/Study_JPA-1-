@@ -8,43 +8,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator; 
 @Entity //필수임 ! 붙이면 jpa가 관리하는 테이블이라는것
-public class Member {
-	
-	@Id @GeneratedValue
-	@Column(name="MEMBER_ID")
+public class Team {
+	 @Id @GeneratedValue
+   	 @Column(name="TEAM_ID")
 	 private Long id;
-	 
-	@Column(name = "USERNAME") 
 	 private String name;
-	 
-	 @Column(name = "TEAM_ID")
-	 private Long teamId; //객체를 테이브 ㄹ중심으로 만들어 버린 예 
-	 //그니깐 테이블의 외래키 인데 이걸 entity에 고대로 박아버린 셈 ! 
-
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Long getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(Long teamId) {
-		this.teamId = teamId;
-	} 
-	 
-	 
 	 
 }

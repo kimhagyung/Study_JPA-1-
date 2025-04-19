@@ -12,12 +12,22 @@ public class JpaMain {
 		//jpa에서는 트랜잭션이 매우 중요함 무조건 넣어줘야된다고 함 
 		EntityTransaction tx=em.getTransaction();
 		tx.begin();
-		try {
+		try {  
+			Team team = new Team();
+			team.setName("TeamA");
+			em.persist(team);
 			
-			Member member=new Member();
-			member.setUsername("C");
-			
+			Member member = new Member();
+			member.setName("member1");
+			member.setTeamId(team.getId()); //외래키 식별자를 그대로 다루고 있음.
 			em.persist(member);
+			
+			
+			//연관관계가 없기 떄문에 번거롭게 됨 계속 참조해야됨 
+			Member findMemeber = em.find(Member.class, member.getId());
+			Long findTeamId =  findMemeber.getTeamId();
+			Team findTeam = em.find(Team.class, findTeamId); 
+			
 			 tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
