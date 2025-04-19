@@ -1,5 +1,7 @@
 package jpa_basic.ex1_hello_jpa.hello_jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -25,14 +27,12 @@ public class JpaMain {
 			em.flush();
 			em.clear(); //이거 두개를 하면 영속성컨텍스트를 초기화 시켜버려서 콘솔에 쿼리가 뜬다 
 			
-			//연관관계가 없기 떄문에 번거롭게 됨 계속 참조해야됨 
 			Member findMemeber = em.find(Member.class, member.getId());
-			Team findTeam = findMemeber.getTeam(); //바로 팀을 받아오면 됨 
-			System.out.println("findTeam = "+findTeam.getName());
+			List<Member> members= findMemeber.getTeam().getMembers(); //양방향 매핑 됨 
 			
-			//연관관계 수정 
-			Team newTeam = em.find(Team.class, 100L);
-			findMemeber.setTeam(newTeam); //이러면  Member테이블의 연관관계 수정이 가능하다
+			for(Member m:members) {
+				System.out.println("m = " + m.getName());
+			}
 			
 			 tx.commit();
 		} catch (Exception e) {
