@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany; 
 @Entity //필수임 ! 붙이면 jpa가 관리하는 테이블이라는것
 public class Team {
@@ -16,7 +17,8 @@ public class Team {
 	 private Long id;
 	 private String name;
 	 
-	 @OneToMany(mappedBy = "team") //team클래스에 team이라는 변수에 의해 매핑이 되어진다.
+	@OneToMany
+	@JoinColumn(name = "TEAM_ID")
 	private List<Member> members =new ArrayList<>();
 	 
 	public Long getId() {
@@ -30,6 +32,13 @@ public class Team {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public List<Member> getMembers() {
+		return members;
+	}
+	public void setMembers(List<Member> members) {
+		this.members = members;
 	} 
-	 
+	
+	
 }
