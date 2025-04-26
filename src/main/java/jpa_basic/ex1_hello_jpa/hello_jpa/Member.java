@@ -17,8 +17,11 @@ public class Member {
 	@Column(name = "USERNAME") 
 	 private String name;
 	  
-	@ManyToOne //다대일 (멤버:팀)
-	@JoinColumn(name = "TEAM_ID") //조인 컬럼 적어주기 
+	//다대일 양방향 관계임. (약간 억지스러움)
+	//name="TEAM_ID" 이거를 쓴다는것부터 연관관계 주인 같은데 문제는 Team에 이미 연관관계 주인이 있다. 
+	//근데 insertable = false, updatable = false 이 있으면 강제로 읽기 전용으로 해버림 
+	@ManyToOne
+	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
 	private Team team;
 	
 	public Long getId() {
