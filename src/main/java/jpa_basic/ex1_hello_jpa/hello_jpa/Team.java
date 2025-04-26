@@ -16,6 +16,9 @@ public class Team {
 	 private Long id;
 	 private String name;
 	 
+	 @OneToMany(mappedBy = "team") //team클래스에 team이라는 변수에 의해 매핑이 되어진다.
+	private List<Member> members =new ArrayList<>();
+	 
 	public Long getId() {
 		return id;
 	}
