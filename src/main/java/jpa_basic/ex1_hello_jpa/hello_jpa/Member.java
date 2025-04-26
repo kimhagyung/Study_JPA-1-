@@ -24,7 +24,7 @@ public class Member {
 	@ManyToOne
 	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
 	private Team team;
-	
+	 
 	@OneToOne //일대일 관계임 
 	@JoinColumn(name = "LOCKER_ID")
 	private Locker locker;
