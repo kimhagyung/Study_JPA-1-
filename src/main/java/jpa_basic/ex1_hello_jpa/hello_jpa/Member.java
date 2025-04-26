@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne; 
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne; 
 @Entity //필수임 ! 붙이면 jpa가 관리하는 테이블이라는것
 public class Member {
 	
@@ -23,6 +24,10 @@ public class Member {
 	@ManyToOne
 	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
 	private Team team;
+	
+	@OneToOne //일대일 관계임 
+	@JoinColumn(name = "LOCKER_ID")
+	private Locker locker;
 	
 	public Long getId() {
 		return id;
