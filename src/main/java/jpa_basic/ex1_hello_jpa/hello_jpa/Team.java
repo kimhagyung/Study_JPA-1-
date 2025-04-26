@@ -16,11 +16,6 @@ public class Team {
 	 private Long id;
 	 private String name;
 	 
-	 @OneToMany(mappedBy = "team") //팀에서 멤버로 가는건 일대다임
-	 //mappedBy 는 현재 member에서 뭐랑 변수가 걸려있는지 ! member 엔ㅌ니티에서는 team이라는이름의 변수랑 매핑되어있음
-	 //mappedBy를 사용하면 주인을 지정한다는것임 
-	 private List<Member> members=new ArrayList<>();
-	 
 	public Long getId() {
 		return id;
 	}
@@ -32,12 +27,6 @@ public class Team {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public List<Member> getMembers() {
-		return members;
-	}
-	public void setMembers(List<Member> members) {
-		this.members = members;
-	}
+	} 
 	 
 }

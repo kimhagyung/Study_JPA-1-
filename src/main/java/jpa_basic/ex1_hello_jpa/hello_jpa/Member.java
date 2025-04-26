@@ -16,11 +16,7 @@ public class Member {
 	 
 	@Column(name = "USERNAME") 
 	 private String name;
-	 
-//	 @Column(name = "TEAM_ID")
-	// private Long teamId; //객체를 테이브 ㄹ중심으로 만들어 버린 예 
-	 //그니깐 테이블의 외래키 인데 이걸 entity에 고대로 박아버린 셈 ! 
-
+	  
 	@ManyToOne //다대일 (멤버:팀)
 	@JoinColumn(name = "TEAM_ID") //조인 컬럼 적어주기 
 	private Team team;
@@ -44,12 +40,6 @@ public class Member {
 	public Team getTeam() {
 		return team;
 	}
-
-	public void setChangTeam(Team team) {
-		this.team = team;
-		team.getMembers().add(this);
-	}
- 
 	 
 	 
 	 
