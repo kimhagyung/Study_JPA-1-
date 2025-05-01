@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany; 
 @Entity //필수임 ! 붙이면 jpa가 관리하는 테이블이라는것
-public class Team {
+public class Team extends BaseEntity  {
 	 @Id @GeneratedValue
    	 @Column(name="TEAM_ID")
 	 private Long id;

@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne; 
 @Entity //필수임 ! 붙이면 jpa가 관리하는 테이블이라는것
-public class Member {
+public class Member extends BaseEntity{
 	
 	@Id @GeneratedValue
 	@Column(name="MEMBER_ID")
