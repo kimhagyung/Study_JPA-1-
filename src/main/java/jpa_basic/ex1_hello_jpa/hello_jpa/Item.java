@@ -8,7 +8,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED) 
+//@Inheritance(strategy=InheritanceType.JOINED) 
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE) //단일 테이블전략   
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) //Item 테이블이 생성안됨 . 그냥 나머지 3개 album, movie, book만 생성ㅅ됨    
 @DiscriminatorColumn
 public class Item {
 	

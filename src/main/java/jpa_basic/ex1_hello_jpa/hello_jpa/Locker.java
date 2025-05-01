@@ -1,9 +1,10 @@
 package jpa_basic.ex1_hello_jpa.hello_jpa;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
+@Entity
 public class Locker {
 
 	@Id @GeneratedValue
